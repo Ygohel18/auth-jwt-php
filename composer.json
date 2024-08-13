@@ -1,0 +1,17 @@
+{
+    "name": "ygohel18/auth-jwt-php",
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "App": "/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yash Gohel",
+            "email": "yashgohel16@gmail.com"
+        }
+    ]
+}
