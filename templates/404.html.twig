@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block contentHeader %}
+<div class="row">
+    <div class="col-sm-6">
+        <h3 class="mb-0">Error</h3>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">404 Error</li>
+        </ol>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-warning"> 404</h2>
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+            <p>
+                We could not find the page you were looking for.
+                Meanwhile, you may <a href="/auth-jwt-php/home">return to dashboard.</a>
+            </p>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

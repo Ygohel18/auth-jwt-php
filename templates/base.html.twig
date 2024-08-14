@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Dashboard">
+    <meta name="author" content="Yash Gohel">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="/auth-jwt-php/public/assets/adminlte/dist/css/adminlte.min.css">
+    <!-- AdminLTE Plugins -->
+    {# <link rel="stylesheet" href="/public/adminlte/plugins/fontawesome-free/css/all.min.css"> #}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
+</head>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+
+<div class="app-wrapper">
+
+    {% include 'navbar.html.twig' %}
+    {% include 'sidebar.html.twig' %}
+
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                {% block contentHeader %}{% endblock %}
+            </div>
+        </div>
+        <div class="app-content">
+            <div class="container-fluid"> 
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        
+    </main>
+    {% include 'footer.html.twig' %}
+
+    
+</div>
+<!-- ./wrapper -->
+
+<!-- AdminLTE Scripts -->
+<script src="/auth-jwt-php/public/assets/plugins/jquery/jquery-3.5.1.min.js"></script>
+<script src="/auth-jwt-php/public/assets/plugins/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+<script src="/auth-jwt-php/public/assets/adminlte/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,35 +1,46 @@
 <?php
 
 require_once 'vendor/autoload.php';
-include_once './Auth.php';
 
-try {
-    $pdo = new PDO('mysql:host=localhost;dbname=authjwt', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Angrybird :)
 
-    $auth = new Auth($pdo, 'your_secret_key');
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
-    // Register a new user
-    $auth->register('username', 'password');
+// Start session
+session_start();
 
-    // Login and generate JWT
-    $token = $auth->login('username', 'password');
-    if ($token) {
-        echo "JWT Token: " . $token;
+// Load routes
+$routes = require 'routes/web.php';
 
-        $decodedData = $auth->validateJWT($token);
-        if ($decodedData) {
-            echo "<br><br>User ID: " . $decodedData['userId'];
-        } else {
-            echo "Invalid token!";
-        }
+// Get the requested path
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = str_replace('/auth-jwt-php', '', $path);  //Only if you are running on localhost
 
-    } else {
-        echo "Invalid credentials!";
-    }
 
-    
-    
-} catch (PDOException $e) {
-    echo "Database error: " . $e->getMessage();
+// Configure Twig
+$loader = new FilesystemLoader('templates');
+$twig = new Environment($loader, [
+    'cache' => false,
+    'debug' => true
+]);
+
+// Route the request
+if (array_key_exists($path, $routes)) {
+
+    error_log("Requested path: " . $path);
+    error_log("Available routes: " . print_r($routes, true));
+
+    echo $twig->render($routes[$path]['template'], [
+        'title' => $routes[$path]['name'],
+        'current_path' => $path,
+        'routes' => $routes,
+    ]);
+} else {
+    // Handle 404
+    echo $twig->render('404.html.twig', [
+        'title' => '404 Page Not Found',
+        'current_path' => $path,
+        'routes' => $routes,
+    ]);
 }

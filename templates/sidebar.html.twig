@@ -1,0 +1,45 @@
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <div class="sidebar-brand">
+        <a href="/auth-jwt-php/home" class="brand-link">
+            <i class="nav-icon bi bi-speedometer"  class="brand-image"></i>
+            {# <img src="/public/assets/image/brand-logo.png" alt="Logo" class="brand-image"> #}
+            <span class="brand-text fw-light">Dashboard</span>
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <nav class="mt-2">
+            <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+
+                <li class="nav-item">
+                    <a href="/auth-jwt-php/home" class="nav-link {{ current_path == 'home' ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ current_path starts with 'user' ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ current_path starts with 'user' ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-people-fill"></i>
+                        <p>Users<i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="user/new" class="nav-link {{ current_path == 'user/new' ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>New User</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-box-arrow-left"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
